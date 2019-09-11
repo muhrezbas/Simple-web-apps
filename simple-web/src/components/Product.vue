@@ -4,13 +4,15 @@
     <div v-on:click.prevent="cond=true">
       <CardProduct v-if="cond==false" title="Invoice" :count="this.$store.state.invoiceCount" />
     </div>
-    <div v-on:click.prevent="cond=false">
-      <CardBold
-        style="background-color:green;"
-        v-if="cond==true"
-        title="Invoice"
-        :count="this.$store.state.invoiceCount"
-      />
+    <div>
+      <div v-on:click.prevent="cond=false">
+        <CardBold
+          style="background-color:green;"
+          v-if="cond==true"
+          title="Invoice"
+          :count="this.$store.state.invoiceCount"
+        />
+      </div>
       <div style="display: flex;">
         <CardProduct
           v-for="condi in this.$store.state.invoice"
@@ -25,13 +27,15 @@
     <div v-on:click.prevent="condOsf=true">
       <CardProduct v-if="condOsf==false" title="OSF" :count="this.$store.state.osfCount" />
     </div>
-    <div v-on:click.prevent="condOsf=false">
-      <CardBold
-        style="background-color:green;"
-        v-if="condOsf==true"
-        title="OSF"
-        :count="this.$store.state.osfCount"
-      />
+    <div>
+      <div v-on:click.prevent="condOsf=false">
+        <CardBold
+          style="background-color:green;"
+          v-if="condOsf==true"
+          title="OSF"
+          :count="this.$store.state.osfCount"
+        />
+      </div>
       <div style="display: flex;">
         <CardProduct
           v-for="condi in this.$store.state.osf"
