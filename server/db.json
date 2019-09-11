@@ -1,0 +1,27 @@
+{
+    "invoice": [
+      {
+        "name": "Conventional Invoice",
+        "count": 20,
+        "sub": "invoice/conventional_invoice.json"
+      },
+      {
+        "name": "Sharia Invoice",
+        "count": 15,
+        "sub": "invoice/sharia_invoice.json"
+      }
+    ],
+    "osf": [
+        {
+          "name": "Conventional OSF",
+          "count": 15,
+          "sub": "osf/conventional_osf.json"
+        },
+        {
+          "name": "Sharia OSF",
+          "count": 10,
+          "sub": "osf/sharia_osf.json"
+        }
+      ]
+
+  }
