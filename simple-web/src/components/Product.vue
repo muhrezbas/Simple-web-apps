@@ -1,10 +1,10 @@
 <template>
   <div style="text-align: left;">
     <h1>{{ msg }}</h1>
-    <CardProduct />
-    <CardProduct />
-    <CardProduct />
-    <CardProduct />
+    <CardProduct title="Invoice" :count="this.$store.state.invoiceCount"/>
+    <CardProduct title="OSF" :count="this.$store.state.osfCount"/>
+    <CardProduct title="Reksadana"/>
+    <CardProduct title="SBN"/>
   </div>
 </template>
 
@@ -13,10 +13,14 @@ import CardProduct from "./CardProduct";
 export default {
   name: "HelloWorld",
   props: {
-    msg: String
+    msg: String,
   },
   components: {
     CardProduct
+  },
+  created(){
+     this.$store.dispatch("GET_INVOICE")
+     this.$store.dispatch("GET_OSF")
   }
 };
 </script>

@@ -1,16 +1,20 @@
 <template>
   <b-card img-src="../assets/doc.png" height="10px" img-alt="Card image" img-left class="mb-3">
     <div style="display: flex;  justify-content: space-between">
-      <b-card-title>Card Title</b-card-title>
-      <b-card-text style="color: #73d933;font-weight: bold;">35</b-card-text>
+      <b-card-title>{{title}}</b-card-title>
+      <b-card-text style="color: #73d933;font-weight: bold;">{{count}}</b-card-text>
     </div>
-    <b-card-text>Some quick example text to build on the card and make up the bulk of the card's content.</b-card-text>
+    <b-card-text>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. . All the Lorem Ipsum generators on the Internet tend to repeat predefined.</b-card-text>
   </b-card>
 </template>
 
 <script>
 export default {
-  name: "CardProduct"
+  name: "CardProduct",
+  props: {
+    title: String,
+    count: String
+  }
 };
 </script>
 

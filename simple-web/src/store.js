@@ -10,17 +10,16 @@ export default new Vuex.Store({
     },
     answers: [],
     detailsNow: "",
-    questionOne: "",
-    questions: [],
+    osfCount: 0,
+    osf: [],
     joined: false,
-    currentRoom: "",
-    currentRoomDetails: "",
+    invoiceCount: 0,
     isLogin: false,
-    invoice:[],
-    newSearching:""
+    invoice: [],
+    newSearching: ""
   },
   mutations: {
-    SEARCHING(state,payload){
+    SEARCHING(state, payload) {
       state.newSearching = payload
       console.log(this.state.newSearching)
     },
@@ -43,17 +42,19 @@ export default new Vuex.Store({
       state.questions = payload
       // console.log(this.state.questions, "payloadnya")
     },
-    SET_QUESTION_ONE(state, payload) {
-      state.questionOne = payload
-      // console.log(this.state.questionOne, "payloadnya One")
+    SET_OSF(state, payload) {
+      state.osf = payload
+      console.log(this.state.osf, "ini osf")
     },
-    SET_ANSWERS(state, payload) {
-      state.answers = payload
-      // console.log(this.state.answers, "ini answers")
+    SET_OSF_COUNT(state, payload) {
+      state.osfCount = payload
     },
-    SET_INVOICE(state, payload){
+    SET_INVOICE(state, payload) {
       state.invoice = payload
       console.log(this.state.invoice, "ini invoice")
+    },
+    SET_INVOICE_COUNT(state, payload) {
+      state.invoiceCount = payload
     }
   },
   actions: {
@@ -64,20 +65,31 @@ export default new Vuex.Store({
           console.log(data, "disini");
           // context.questions = data;
           context.commit("SET_INVOICE", data)
+          let counting = 0
+          for (let i = 0; i < data.length; i++) {
+            counting+=data[i].count
+          }
+          context.commit("SET_INVOICE_COUNT", counting)
+          // console.log(counting)
           // console.log(context.questions);
         })
         .catch(function (error) {
           console.log(error);
         });
     },
-    GET_QUESTION_ONE(context, payload) {
-      console.log(payload, "oneone")
+    GET_OSF(context) {
       instance
-        .get(`/questions/${payload}`, {})
+        .get("/osf", {})
         .then(({ data }) => {
-          // console.log(data, "disini");
+          console.log(data, "disini");
           // context.questions = data;
-          context.commit("SET_QUESTION_ONE", data)
+          context.commit("SET_OSF", data)
+          let counting = 0
+          for (let i = 0; i < data.length; i++) {
+            counting+=data[i].count
+          }
+          context.commit("SET_OSF_COUNT", counting)
+          // console.log(counting)
           // console.log(context.questions);
         })
         .catch(function (error) {
