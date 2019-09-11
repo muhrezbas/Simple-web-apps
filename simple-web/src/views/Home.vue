@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Header />
-    <Product style="margin-top : 100px;" msg="PRODUCT" />
+    <Product style="margin-top : 100px;" msg="PRODUCT" cond="false" />
   </div>
 </template>
 

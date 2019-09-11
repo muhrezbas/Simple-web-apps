@@ -1,26 +1,75 @@
 <template>
   <div style="text-align: left;">
     <h1>{{ msg }}</h1>
-    <CardProduct title="Invoice" :count="this.$store.state.invoiceCount"/>
-    <CardProduct title="OSF" :count="this.$store.state.osfCount"/>
-    <CardProduct title="Reksadana"/>
-    <CardProduct title="SBN"/>
+    <div v-on:click.prevent="cond=true">
+      <CardProduct v-if="cond==false" title="Invoice" :count="this.$store.state.invoiceCount" />
+    </div>
+    <div v-on:click.prevent="cond=false">
+      <CardBold
+        style="background-color:green;"
+        v-if="cond==true"
+        title="Invoice"
+        :count="this.$store.state.invoiceCount"
+      />
+      <div style="display: flex;">
+        <CardProduct
+          v-for="condi in this.$store.state.invoice"
+          :key="condi.sub"
+          v-if="cond==true"
+          :title="condi.name"
+          :count="condi.count"
+        />
+        <!-- <CardProduct v-if="cond==true" title="Invoice" :count="this.$store.state.invoiceCount" /> -->
+      </div>
+    </div>
+    <div v-on:click.prevent="condOsf=true">
+      <CardProduct v-if="condOsf==false" title="OSF" :count="this.$store.state.osfCount" />
+    </div>
+    <div v-on:click.prevent="condOsf=false">
+      <CardBold
+        style="background-color:green;"
+        v-if="condOsf==true"
+        title="OSF"
+        :count="this.$store.state.osfCount"
+      />
+      <div style="display: flex;">
+        <CardProduct
+          v-for="condi in this.$store.state.osf"
+          :key="condi.sub"
+          v-if="condOsf==true"
+          :title="condi.name"
+          :count="condi.count"
+        />
+        <!-- <CardProduct v-if="cond==true" title="Invoice" :count="this.$store.state.invoiceCount" /> -->
+      </div>
+    </div>
+    <CardProduct title="Reksadana" :count="0" />
+    <CardProduct title="SBN" :count="0" />
   </div>
 </template>
 
 <script>
 import CardProduct from "./CardProduct";
+import CardBold from "./CardBold";
 export default {
   name: "HelloWorld",
   props: {
-    msg: String,
+    msg: String
+  },
+  data() {
+    return {
+      counter: 0,
+      cond: false,
+      condOsf: false
+    };
   },
   components: {
-    CardProduct
+    CardProduct,
+    CardBold
   },
-  created(){
-     this.$store.dispatch("GET_INVOICE")
-     this.$store.dispatch("GET_OSF")
+  created() {
+    this.$store.dispatch("GET_INVOICE");
+    this.$store.dispatch("GET_OSF");
   }
 };
 </script>

@@ -3,12 +3,12 @@
     <div v-if="count > 0" style="display: flex;  justify-content: space-between">
       <b-card-title>{{title}}</b-card-title>
 
-      <b-card-text style="color: #73d933;font-weight: bold;">{{count}}</b-card-text>
+      <b-card-text style="color: white;font-weight: bold;">{{count}}</b-card-text>
     </div>
     <div v-else>
       <b-card-title>{{title}}</b-card-title>
     </div>
-    <b-card-text style="color: #817E92">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. . All the Lorem Ipsum generators on the Internet tend to repeat predefined.</b-card-text>
+    <b-card-text style="color: white">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. . All the Lorem Ipsum generators on the Internet tend to repeat predefined.</b-card-text>
   </b-card>
 </template>
 
@@ -34,7 +34,7 @@ a {
   height: 150px;
 }
 .card-title {
-  color: #73d933;
+  color: white;
   font-weight: bold;
 }
 </style>
