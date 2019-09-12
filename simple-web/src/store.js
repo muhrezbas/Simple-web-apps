@@ -9,14 +9,14 @@ export default new Vuex.Store({
       username: ""
     },
     main: [],
-    detailsNow: "",
     osfCount: 0,
     osf: [],
+    column:"",
     dataProduct: [],
     invoiceCount: 0,
     isLogin: false,
     invoice: [],
-    newSearching: ""
+    sorting: []
   },
   mutations: {
     SEARCHING(state, payload) {
@@ -27,13 +27,13 @@ export default new Vuex.Store({
       state.isLogin = true
 
     },
-    SET_DETAIL(state, payload) {
+    SET_COLUMN(state, payload) {
       // console.log(payload, "disiniii ni")
-      state.detailsNow = payload
+      state.column = payload
+      console.log(this.state.column,"sorting")
     },
-    LOGOUT(state) {
-      state.user.username = ""
-      state.isLogin = false
+    SET_SORT(state,payload) {
+      state.sorting = payload
     },
     SET_MAIN(state, payload) {
       state.main = payload
@@ -67,7 +67,7 @@ export default new Vuex.Store({
           context.commit("SET_INVOICE", data)
           let counting = 0
           for (let i = 0; i < data.length; i++) {
-            counting+=data[i].count
+            counting += data[i].count
           }
           context.commit("SET_INVOICE_COUNT", counting)
           // console.log(counting)
@@ -86,7 +86,7 @@ export default new Vuex.Store({
           context.commit("SET_OSF", data)
           let counting = 0
           for (let i = 0; i < data.length; i++) {
-            counting+=data[i].count
+            counting += data[i].count
           }
           context.commit("SET_OSF_COUNT", counting)
           // console.log(counting)
@@ -100,10 +100,18 @@ export default new Vuex.Store({
       console.log(payload.split(" ")[0], "data coba split")
       let data1 = payload.split(" ")[0]
       let data2 = payload.split(" ")[1]
-      console.log(data2,"data dua")
-      if(data2!==undefined){
-        data1 = data1+data2
-        console.log(data1,"Setelah ditambah")
+      console.log(data2, "data dua")
+      if (data2 !== undefined) {
+        data1 = data1 + data2
+        console.log(data1, "Setelah ditambah")
+      }
+      if (data1 == "ConventionalOSF" || data1 == "ShariaOSF" || data1 == "ShariaInvoice" || data1 == "ConventionalInvoice") {
+        context.commit("SET_SORT", ["A","B+","B"])
+        context.commit("SET_COLUMN", "grade")
+      }
+      else if(data1 == "SBN"){
+        context.commit("SET_SORT", ["SBR","ST"])
+        context.commit("SET_COLUMN", "type")
       }
       instance
         .get(`/${data1}`, {})

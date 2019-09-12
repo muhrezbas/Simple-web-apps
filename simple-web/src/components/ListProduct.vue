@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: left;">
     <h1>{{ msg }}</h1>
-    <b-input-group size="m" style="margin:25px; width:80%">
+    <b-input-group size="m" style="margin:25px; width:80%" v-if="sort.length>0">
       <b-input-group-prepend>
         <span class="input-group-text">
           <i class="fa fa-search"></i>
@@ -9,18 +9,21 @@
       </b-input-group-prepend>
       <b-form-input v-model="filter" type="search" id="filterInput" placeholder="Search"></b-form-input>
       <template v-slot:append>
-        <b-dropdown text="SORT">
-          <b-dropdown-item>Action A</b-dropdown-item>
-          <b-dropdown-item>Action B</b-dropdown-item>
+        <b-dropdown v-model="filter" text="SORT">
+          <b-dropdown-item v-on:click.prevent="sortings('all')">ALL</b-dropdown-item>
+          <b-dropdown-item
+            v-on:click.prevent="sortings(condi)"
+            v-for="condi in sort"
+            :key="condi"
+          >{{condi}}</b-dropdown-item>
         </b-dropdown>
       </template>
     </b-input-group>
     <b-table
       sticky-header
       :filter="filter"
-      :filterIncludedFields="filterOn"
-      @filtered="onFiltered"
       :items="this.$store.state.dataProduct"
+      :filterIncludedFields="filterOn"
     >
       <template v-slot:cell(amount)="data">
         <b>{{ currency(data.item.amount) }}</b>
@@ -45,7 +48,8 @@ export default {
       cond: false,
       condOsf: false,
       filter: null,
-      filterOn: []
+      filterOn: [],
+      sort: []
     };
   },
   components: {
@@ -53,31 +57,40 @@ export default {
     CardBold
   },
   methods: {
-    onFiltered(filteredItems) {
-      // Trigger pagination to update the number of buttons/pages due to filtering
-      this.totalRows = filteredItems.length;
-      this.currentPage = 1;
-    },
     currency(payload) {
       return new Intl.NumberFormat("id-ID", {
         style: "currency",
         currency: "IDR"
       }).format(payload);
+    },
+    sortings(payload) {
+      console.log(payload);
+      if (payload === "all") {
+        this.filter = "";
+        this.filterOn = [];
+      } else {
+        this.filter = payload;
+        this.filterOn = this.$store.state.column;
+      }
     }
   },
   created() {
     console.log(this.$route.params.id);
+    this.filter = "";
+    this.filterOn = [];
     this.$store.dispatch("GET_DATA", this.$route.params.id);
+    console.log(this.$store.state.sorting, "dihtml");
+    this.sort = this.$store.state.sorting;
   },
   computed: {
-    sortOptions() {
-      // Create an options list from our fields
-      return this.fields
-        .filter(f => f.sortable)
-        .map(f => {
-          return { text: f.label, value: f.key };
-        });
-    }
+    // sortOptions() {
+    //   // Create an options list from our fields
+    //   return this.fields
+    //     .filter(f => f.sortable)
+    //     .map(f => {
+    //       return { text: f.label, value: f.key };
+    //     });
+    // }
   }
 };
 </script>
