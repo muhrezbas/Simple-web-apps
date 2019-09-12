@@ -1,27 +1,128 @@
 {
-    "invoice": [
-      {
-        "name": "Conventional Invoice",
-        "count": 20,
-        "sub": "invoice/conventional_invoice.json"
-      },
-      {
-        "name": "Sharia Invoice",
-        "count": 15,
-        "sub": "invoice/sharia_invoice.json"
-      }
-    ],
-    "osf": [
-        {
-          "name": "Conventional OSF",
-          "count": 15,
-          "sub": "osf/conventional_osf.json"
-        },
-        {
-          "name": "Sharia OSF",
-          "count": 10,
-          "sub": "osf/sharia_osf.json"
-        }
-      ]
-
-  }
+  "invoice": [
+    {
+      "name": "Conventional Invoice",
+      "count": 20,
+      "sub": "invoice/conventional_invoice.json"
+    },
+    {
+      "name": "Sharia Invoice",
+      "count": 15,
+      "sub": "invoice/sharia_invoice.json"
+    }
+  ],
+  "osf": [
+    {
+      "name": "Conventional OSF",
+      "count": 15,
+      "sub": "osf/conventional_osf.json"
+    },
+    {
+      "name": "Sharia OSF",
+      "count": 10,
+      "sub": "osf/sharia_osf.json"
+    }
+  ],
+  "reksadana": [
+    {
+      "name": "INB",
+      "amount": 20000000,
+      "return": -1
+    },
+    {
+      "name": "PT TELMOM",
+      "amount": 10000000,
+      "return": 1
+    },
+    {
+      "name": "PT MOKLET",
+      "amount": 30000000,
+      "return": 2
+    },
+    {
+      "name": "PT IRIDNAM",
+      "amount": 400000000,
+      "return": -0.2
+    },
+    {
+      "name": "PT KML",
+      "amount": 200000000,
+      "return": -0.1
+    },
+    {
+      "name": "PT MNO",
+      "amount": 90000000,
+      "return": 1.25
+    },
+    {
+      "name": "PT GHI",
+      "amount": 80000000,
+      "return": 1.7
+    },
+    {
+      "name": "PT ACB",
+      "amount": 50000000,
+      "return": 1.6
+    },
+    {
+      "name": "PT FIN",
+      "amount": 700000000,
+      "return": 1
+    },
+    {
+      "name": "PT LENO",
+      "amount": 900000000,
+      "return": -0.125
+    },
+    {
+      "name": "BGT",
+      "amount": 20000000,
+      "return": -1
+    },
+    {
+      "name": "PT HEHEHE",
+      "amount": 10000000,
+      "return": 1
+    },
+    {
+      "name": "PT TELMI",
+      "amount": 30000000,
+      "return": 2
+    },
+    {
+      "name": "PT MANDARA",
+      "amount": 400000000,
+      "return": -0.2
+    },
+    {
+      "name": "PT KMKM",
+      "amount": 200000000,
+      "return": -0.1
+    },
+    {
+      "name": "PT RTU",
+      "amount": 90000000,
+      "return": 1.25
+    },
+    {
+      "name": "PT REMBO",
+      "amount": 80000000,
+      "return": 1.7
+    },
+    {
+      "name": "PT IVTRE",
+      "amount": 50000000,
+      "return": 1.6
+    },
+    {
+      "name": "PT HON",
+      "amount": 700000000,
+      "return": 1
+    },
+    {
+      "name": "PT MAC",
+      "amount": 900000000,
+      "return": -0.125
+    }
+  ]
+}

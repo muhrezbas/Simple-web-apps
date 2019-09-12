@@ -12,7 +12,7 @@ export default new Vuex.Store({
     detailsNow: "",
     osfCount: 0,
     osf: [],
-    joined: false,
+    dataProduct: [],
     invoiceCount: 0,
     isLogin: false,
     invoice: [],
@@ -38,9 +38,9 @@ export default new Vuex.Store({
     SET_USER(state, payload) {
       state.user = payload
     },
-    SET_QUESTION(state, payload) {
-      state.questions = payload
-      // console.log(this.state.questions, "payloadnya")
+    SET_DATA_PRODUCT(state, payload) {
+      state.dataProduct = payload
+      console.log(this.state.dataProduct, "payloadnya")
     },
     SET_OSF(state, payload) {
       state.osf = payload
@@ -96,14 +96,14 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
-    GET_ANSWERS(context, payload) {
-      console.log(payload, "answer")
+    GET_DATA(context, payload) {
+      console.log(payload, "data")
       instance
-        .get(`/answers/${payload}`, {})
+        .get(`/${payload}`, {})
         .then(({ data }) => {
           console.log(data, "disini");
           // context.questions = data;
-          context.commit("SET_ANSWERS", data)
+          context.commit("SET_DATA_PRODUCT", data)
           // console.log(context.questions);
         })
         .catch(function (error) {

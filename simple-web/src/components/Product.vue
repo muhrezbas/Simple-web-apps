@@ -1,10 +1,10 @@
 <template>
   <div style="text-align: left;">
     <h1>{{ msg }}</h1>
-    <div v-on:click.prevent="cond=true">
+    <div v-on:click.prevent="cond=true" style="cursor: pointer;">
       <CardProduct v-if="cond==false" title="Invoice" :count="this.$store.state.invoiceCount" />
     </div>
-    <div>
+    <div style="cursor: pointer;">
       <div v-on:click.prevent="cond=false">
         <CardBold
           style="background-color:green;"
@@ -13,7 +13,7 @@
           :count="this.$store.state.invoiceCount"
         />
       </div>
-      <div style="display: flex;">
+      <div style="display: flex; cursor: pointer;">
         <CardProduct
           v-for="condi in this.$store.state.invoice"
           :key="condi.sub"
@@ -24,10 +24,10 @@
         <!-- <CardProduct v-if="cond==true" title="Invoice" :count="this.$store.state.invoiceCount" /> -->
       </div>
     </div>
-    <div v-on:click.prevent="condOsf=true">
+    <div style="cursor: pointer;" v-on:click.prevent="condOsf=true">
       <CardProduct v-if="condOsf==false" title="OSF" :count="this.$store.state.osfCount" />
     </div>
-    <div>
+    <div style="cursor: pointer;">
       <div v-on:click.prevent="condOsf=false">
         <CardBold
           style="background-color:green;"
@@ -36,7 +36,7 @@
           :count="this.$store.state.osfCount"
         />
       </div>
-      <div style="display: flex;">
+      <div style="display: flex; cursor: pointer;">
         <CardProduct
           v-for="condi in this.$store.state.osf"
           :key="condi.sub"
@@ -47,8 +47,10 @@
         <!-- <CardProduct v-if="cond==true" title="Invoice" :count="this.$store.state.invoiceCount" /> -->
       </div>
     </div>
-    <CardProduct title="Reksadana" :count="0" />
-    <CardProduct title="SBN" :count="0" />
+    <router-link to="/reksadana">
+    <CardProduct style="cursor: pointer;" title="Reksadana" :count="0" />
+    </router-link>
+    <CardProduct style="cursor: pointer;" title="SBN" :count="0" />
   </div>
 </template>
 
