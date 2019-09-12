@@ -1,56 +1,13 @@
 <template>
   <div style="text-align: left;">
     <h1>{{ msg }}</h1>
-    <div v-on:click.prevent="cond=true" style="cursor: pointer;">
-      <CardProduct v-if="cond==false" title="Invoice" :count="this.$store.state.invoiceCount" />
-    </div>
-    <div style="cursor: pointer;">
-      <div v-on:click.prevent="cond=false">
-        <CardBold
-          style="background-color:green;"
-          v-if="cond==true"
-          title="Invoice"
-          :count="this.$store.state.invoiceCount"
-        />
-      </div>
-      <div style="display: flex; cursor: pointer;">
-        <CardProduct
-          v-for="condi in this.$store.state.invoice"
-          :key="condi.sub"
-          v-if="cond==true"
-          :title="condi.name"
-          :count="condi.count"
-        />
-        <!-- <CardProduct v-if="cond==true" title="Invoice" :count="this.$store.state.invoiceCount" /> -->
-      </div>
-    </div>
-    <div style="cursor: pointer;" v-on:click.prevent="condOsf=true">
-      <CardProduct v-if="condOsf==false" title="OSF" :count="this.$store.state.osfCount" />
-    </div>
-    <div style="cursor: pointer;">
-      <div v-on:click.prevent="condOsf=false">
-        <CardBold
-          style="background-color:green;"
-          v-if="condOsf==true"
-          title="OSF"
-          :count="this.$store.state.osfCount"
-        />
-      </div>
-      <div style="display: flex; cursor: pointer;">
-        <CardProduct
-          v-for="condi in this.$store.state.osf"
-          :key="condi.sub"
-          v-if="condOsf==true"
-          :title="condi.name"
-          :count="condi.count"
-        />
-        <!-- <CardProduct v-if="cond==true" title="Invoice" :count="this.$store.state.invoiceCount" /> -->
-      </div>
-    </div>
-    <router-link to="/reksadana">
-    <CardProduct style="cursor: pointer;" title="Reksadana" :count="0" />
-    </router-link>
-    <CardProduct style="cursor: pointer;" title="SBN" :count="0" />
+      <CardProduct
+        v-for="prods in this.$store.state.main"
+        :key="prods.sub"
+        :title="prods.name"
+        :count="prods.count"
+      />
+  
   </div>
 </template>
 
@@ -66,7 +23,8 @@ export default {
     return {
       counter: 0,
       cond: false,
-      condOsf: false
+      condOsf: false,
+      link
     };
   },
   components: {
@@ -76,6 +34,7 @@ export default {
   created() {
     this.$store.dispatch("GET_INVOICE");
     this.$store.dispatch("GET_OSF");
+    this.$store.dispatch("GET_MAIN");
   }
 };
 </script>

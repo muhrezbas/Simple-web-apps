@@ -1,8 +1,19 @@
 <template>
   <div style="text-align: left;">
     <h1>{{ msg }}</h1>
-    <b-input-group size="sm" style="margin:25px; border-radius: 2000px;">
+    <b-input-group size="m" style="margin:25px; width:80%">
+      <b-input-group-prepend>
+        <span class="input-group-text">
+          <i class="fa fa-search"></i>
+        </span>
+      </b-input-group-prepend>
       <b-form-input v-model="filter" type="search" id="filterInput" placeholder="Search"></b-form-input>
+      <template v-slot:append>
+        <b-dropdown text="SORT">
+          <b-dropdown-item>Action A</b-dropdown-item>
+          <b-dropdown-item>Action B</b-dropdown-item>
+        </b-dropdown>
+      </template>
     </b-input-group>
     <b-table
       sticky-header

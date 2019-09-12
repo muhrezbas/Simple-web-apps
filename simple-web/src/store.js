@@ -8,7 +8,7 @@ export default new Vuex.Store({
     user: {
       username: ""
     },
-    answers: [],
+    main: [],
     detailsNow: "",
     osfCount: 0,
     osf: [],
@@ -35,8 +35,8 @@ export default new Vuex.Store({
       state.user.username = ""
       state.isLogin = false
     },
-    SET_USER(state, payload) {
-      state.user = payload
+    SET_MAIN(state, payload) {
+      state.main = payload
     },
     SET_DATA_PRODUCT(state, payload) {
       state.dataProduct = payload
@@ -97,9 +97,16 @@ export default new Vuex.Store({
         });
     },
     GET_DATA(context, payload) {
-      console.log(payload, "data")
+      console.log(payload.split(" ")[0], "data coba split")
+      let data1 = payload.split(" ")[0]
+      let data2 = payload.split(" ")[1]
+      console.log(data2,"data dua")
+      if(data2!==undefined){
+        data1 = data1+data2
+        console.log(data1,"Setelah ditambah")
+      }
       instance
-        .get(`/${payload}`, {})
+        .get(`/${data1}`, {})
         .then(({ data }) => {
           console.log(data, "disini");
           // context.questions = data;
@@ -111,13 +118,13 @@ export default new Vuex.Store({
         });
     },
 
-    GET_QUESTION(context) {
+    GET_MAIN(context) {
       instance
-        .get("/questions", {})
+        .get("/main", {})
         .then(({ data }) => {
-          console.log(data, "disini");
+          console.log(data, "disini main data");
           // context.questions = data;
-          context.commit("SET_QUESTION", data)
+          context.commit("SET_MAIN", data)
           // console.log(context.questions);
         })
         .catch(function (error) {

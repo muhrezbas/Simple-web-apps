@@ -1,4 +1,26 @@
 {
+  "main": [
+    {
+      "name": "Invoice Financing",
+      "count": 35,
+      "sub": "invoice/invoice.json"
+    },
+    {
+      "name": "OSF Financing",
+      "count": 25,
+      "sub": "invoice/osf.json"
+    },
+    {
+      "name": "SBN",
+      "count": 10,
+      "sub": "invoice/sbn.json"
+    },
+    {
+      "name": "Reksadana",
+      "count": 20,
+      "sub": "invoice/reksadana.json"
+    }
+  ],
   "invoice": [
     {
       "name": "Conventional Invoice",
@@ -21,6 +43,434 @@
       "name": "Sharia OSF",
       "count": 10,
       "sub": "osf/sharia_osf.json"
+    }
+  ],
+  "conventionalosf": [
+    {
+      "name": "PT QWE",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT RTO",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT DOTA",
+      "amount": 50000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT POLL",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT VOW",
+      "amount": 20000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    },
+    {
+      "name": "PT LOP",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT IOP",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT ABA",
+      "amount": 50000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT SKY",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT SAMS",
+      "amount": 20000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    }
+  ],
+  "conventionalinvoice": [
+    {
+      "name": "PT ABC",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT DEF",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT GHI",
+      "amount": 50000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT JKL",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT MNO",
+      "amount": 20000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    },
+    {
+      "name": "PT PQR",
+      "amount": 100000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT STU",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT VWX",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT YZ",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT AB",
+      "amount": 4000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    },
+    {
+      "name": "PT BCAB",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT DFG",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT RTZ",
+      "amount": 50000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT MORPH",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT JUG",
+      "amount": 20000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    },
+    {
+      "name": "PT JCOX",
+      "amount": 100000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT SPOT",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT GHJ",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT QWER",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT YUI",
+      "amount": 4000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    }
+  ],
+  "shariaosf": [
+    {
+      "name": "PT RND",
+      "amount": 100000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT GHI",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT KLO",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT YE",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT CWP",
+      "amount": 4000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    },
+    {
+      "name": "PT GHJ",
+      "amount": 100000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT ASD",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT RTY",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT YEE",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT ASOP",
+      "amount": 4000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    },
+    {
+      "name": "PT JKL",
+      "amount": 100000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT GFD",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT CFD",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT YJK",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT KKY",
+      "amount": 4000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    }
+  ],
+  "shariainvoice": [
+    {
+      "name": "PT QWE",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT RTO",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT DOTA",
+      "amount": 50000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT POLL",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT VOW",
+      "amount": 20000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    },
+    {
+      "name": "PT RND",
+      "amount": 100000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT GHI",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT KLO",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT YE",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT CWP",
+      "amount": 4000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
+    },
+    {
+      "name": "PT ERP",
+      "amount": 100000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT SC",
+      "amount": 2000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT NOTE",
+      "amount": 10000000,
+      "tenor": 120,
+      "grade": "A",
+      "rate": 12
+    },
+    {
+      "name": "PT TYU",
+      "amount": 1000000,
+      "tenor": 120,
+      "grade": "B",
+      "rate": 16
+    },
+    {
+      "name": "PT ZXC",
+      "amount": 4000000,
+      "tenor": 120,
+      "grade": "B+",
+      "rate": 14
     }
   ],
   "reksadana": [
@@ -124,5 +574,77 @@
       "amount": 900000000,
       "return": -0.125
     }
-  ]
+  ],
+    "sbn": [
+      {
+        "name": "SBR XXX",
+        "amount": 1000000,
+        "tenor": 120,
+        "rate": 7,
+        "type": "SBR"
+      },
+      {
+        "name": "SBR YYY",
+        "amount": 2000000,
+        "tenor": 120,
+        "rate": 8,
+        "type": "SBR"
+      },
+      {
+        "name": "SBR ZZZ",
+        "amount": 10000000,
+        "tenor": 120,
+        "rate": 7.5,
+        "type": "SBR"
+      },
+      {
+        "name": "ST XXX",
+        "amount": 30000000,
+        "tenor": 120,
+        "rate": 7,
+        "type": "ST"
+      },
+      {
+        "name": "ST YYY",
+        "amount": 4000000,
+        "tenor": 120,
+        "rate": 7,
+        "type": "ST"
+      },
+      {
+        "name": "SBR FGH",
+        "amount": 10000000,
+        "tenor": 120,
+        "rate": 7,
+        "type": "SBR"
+      },
+      {
+        "name": "SBR JKL",
+        "amount": 20000000,
+        "tenor": 120,
+        "rate": 8,
+        "type": "SBR"
+      },
+      {
+        "name": "SBR ERT",
+        "amount": 100000000,
+        "tenor": 120,
+        "rate": 7.5,
+        "type": "SBR"
+      },
+      {
+        "name": "ST VBN",
+        "amount": 380000000,
+        "tenor": 120,
+        "rate": 7,
+        "type": "ST"
+      },
+      {
+        "name": "ST IOP",
+        "amount": 4000000,
+        "tenor": 120,
+        "rate": 7,
+        "type": "ST"
+      }
+    ]
 }
