@@ -4,10 +4,10 @@
 #### Simple Web Apps built in JSONWEBSERVER.
 
 ### ALL API
-Routes | HTTP | Body | Description | Error Response  | 
------- | ---- | ---- | ----------- | -----------
-http://localhost:3000/main | GET | none | get all data home | username is empty 400, email is empty 400, password is empty 400
-http://localhost:3000/invoice | GET | none | get invoice data | username/password invalid 401
+Routes | HTTP | Body | Description |
+------ | ---- | ---- | ----------- |
+http://localhost:3000/main | GET | none | get all data home 
+http://localhost:3000/invoice | GET | none | get invoice data 
 http://localhost:3000/osf | GET | none | get osf data
 http://localhost:3000/conventionalosf | GET | none | get conventional osf
 http://localhost:3000/conventionalinvoice | GET | none | get conventional invoice
