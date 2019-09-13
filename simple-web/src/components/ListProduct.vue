@@ -8,7 +8,7 @@
         </span>
       </b-input-group-prepend>
       <b-form-input v-model="filter" type="search" id="filterInput" placeholder="Search"></b-form-input>
-    
+
       <template v-slot:append v-if="this.$route.params.id=='Reksadana'">
         <b-dropdown v-model="searchOperator" text="SORT">
           <b-dropdown-item v-on:click.prevent="restart()">ALL</b-dropdown-item>
@@ -16,7 +16,25 @@
           <b-dropdown-item v-on:click.prevent="changeSearchOperator('<')">Negative</b-dropdown-item>
         </b-dropdown>
       </template>
-        <template v-slot:append v-else>
+      <template
+        v-slot:append
+        v-else-if="this.$route.params.id=='Conventional Invoice' || this.$route.params.id=='Conventional OSF' || this.$route.params.id=='Sharia Invoice' || this.$route.params.id=='Sharia OSF'"
+      >
+        <b-dropdown text="SORT">
+          <b-dropdown-item v-on:click.prevent="restart()">ALL</b-dropdown-item>
+          <b-dropdown-item v-on:click.prevent="changeSearchGrade('A')">A</b-dropdown-item>
+          <b-dropdown-item v-on:click.prevent="changeSearchGrade('B+')">B+</b-dropdown-item>
+          <b-dropdown-item v-on:click.prevent="changeSearchGrade('B')">B</b-dropdown-item>
+        </b-dropdown>
+      </template>
+      <template v-slot:append v-else-if="this.$route.params.id=='SBN'">
+        <b-dropdown  text="SORT">
+          <b-dropdown-item v-on:click.prevent="restart()">ALL</b-dropdown-item>
+          <b-dropdown-item v-on:click.prevent="changeSearchType('SBR')">SBR</b-dropdown-item>
+          <b-dropdown-item v-on:click.prevent="changeSearchType('ST')">ST</b-dropdown-item>
+        </b-dropdown>
+      </template>
+      <template v-slot:append v-else>
         <b-dropdown v-model="filter" text="SORT">
           <b-dropdown-item v-on:click.prevent="sortings('all')">ALL</b-dropdown-item>
           <b-dropdown-item
@@ -60,6 +78,8 @@ export default {
       counter: 0,
       data: [],
       searchOperator: 0,
+      searchGrade: 0,
+      searchType: 0,
       listItem: [],
       stickyHeader: true,
       cond: false,
@@ -77,11 +97,22 @@ export default {
     changeSearchOperator(search) {
       this.searchOperator = search;
     },
-    restart(){
-      this.searchOperator = 0
+    changeSearchGrade(grade) {
+      this.searchGrade = grade;
+    },
+    changeSearchType(type) {
+      this.searchType = type;
+    },
+    restart() {
+        console.log('masuk ga')
+      this.searchOperator = 0;
+      this.searchGrade = 0;
+      this.searchType = 0;
+      console.log(this.searchOperator,this.searchGrade,this.searchType)
+      console.log(this.filteredPersons,"afaf")
     },
     filterByReturn: function(user) {
-      console.log(user, "huah");
+    //   console.log(user, "huah");
       // no operator selected or no age typed, don't filter :
       if (this.searchOperator === 0) {
         return true;
@@ -92,6 +123,36 @@ export default {
       } else if (this.searchOperator === "<") {
         return user.return < 0;
       }
+    },
+    filterByGrade: function(user) {
+    //   console.log(user, "huah");
+      // no operator selected or no age typed, don't filter :
+      if (this.searchGrade === 0) {
+          console.log('disni kah?')
+        return true;
+      }
+
+      if (this.searchGrade === "A") {
+        return (user.grade == "A");
+      } else if (this.searchGrade === "B") {
+        return (user.grade == "B");
+      } else if (this.searchGrade === "B+") {
+        return (user.grade == "B+");
+      }
+    },
+    filterByType: function(user) {
+    //   console.log(user, "huah");
+      // no operator selected or no age typed, don't filter :
+      if (this.searchType === 0) {
+        console.log('disni kah?')
+        return true;
+      }
+      if (this.searchType === "SBR") {
+          console.log('true')
+        return (user.type == "SBR");
+      } else if (this.searchType === "ST") {
+        return (user.type == "ST");
+      } 
     },
     currency(payload) {
       return new Intl.NumberFormat("id-ID", {
@@ -134,7 +195,10 @@ export default {
       }
     },
     filteredPersons: function() {
-      return this.$store.state.dataProduct.filter(this.filterByReturn);
+      return this.$store.state.dataProduct
+        .filter(this.filterByReturn)
+        .filter(this.filterByType)
+        .filter(this.filterByGrade);
     }
     // sortOptions() {
     //   // Create an options list from our fields
