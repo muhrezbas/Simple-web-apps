@@ -8,7 +8,15 @@
         </span>
       </b-input-group-prepend>
       <b-form-input v-model="filter" type="search" id="filterInput" placeholder="Search"></b-form-input>
-      <template v-slot:append>
+    
+      <template v-slot:append v-if="this.$route.params.id=='Reksadana'">
+        <b-dropdown v-model="searchOperator" text="SORT">
+          <b-dropdown-item v-on:click.prevent="restart()">ALL</b-dropdown-item>
+          <b-dropdown-item v-on:click.prevent="changeSearchOperator('>=')">Positive</b-dropdown-item>
+          <b-dropdown-item v-on:click.prevent="changeSearchOperator('<')">Negative</b-dropdown-item>
+        </b-dropdown>
+      </template>
+        <template v-slot:append v-else>
         <b-dropdown v-model="filter" text="SORT">
           <b-dropdown-item v-on:click.prevent="sortings('all')">ALL</b-dropdown-item>
           <b-dropdown-item
@@ -22,11 +30,18 @@
     <b-table
       sticky-header
       :filter="filter"
-      :items="this.$store.state.dataProduct"
+      :busy="isBusy"
+      :items="filteredPersons"
       :filterIncludedFields="filterOn"
     >
       <template v-slot:cell(amount)="data">
         <b>{{ currency(data.item.amount) }}</b>
+      </template>
+      <template v-slot:table-busy>
+        <div class="text-center text-danger my-2">
+          <b-spinner class="align-middle"></b-spinner>
+          <strong>Loading...</strong>
+        </div>
       </template>
     </b-table>
   </div>
@@ -44,6 +59,8 @@ export default {
     return {
       counter: 0,
       data: [],
+      searchOperator: 0,
+      listItem: [],
       stickyHeader: true,
       cond: false,
       condOsf: false,
@@ -57,6 +74,25 @@ export default {
     CardBold
   },
   methods: {
+    changeSearchOperator(search) {
+      this.searchOperator = search;
+    },
+    restart(){
+      this.searchOperator = 0
+    },
+    filterByReturn: function(user) {
+      console.log(user, "huah");
+      // no operator selected or no age typed, don't filter :
+      if (this.searchOperator === 0) {
+        return true;
+      }
+
+      if (this.searchOperator === ">=") {
+        return user.return >= 0;
+      } else if (this.searchOperator === "<") {
+        return user.return < 0;
+      }
+    },
     currency(payload) {
       return new Intl.NumberFormat("id-ID", {
         style: "currency",
@@ -76,13 +112,30 @@ export default {
   },
   created() {
     console.log(this.$route.params.id);
+    this.data = [];
+    this.listItem = [];
     this.filter = "";
     this.filterOn = [];
     this.$store.dispatch("GET_DATA", this.$route.params.id);
+    this.listItem = this.$store.state.dataProduct;
     console.log(this.$store.state.sorting, "dihtml");
     this.sort = this.$store.state.sorting;
   },
+  mounted() {
+    console.log(this.data.length, "length");
+  },
   computed: {
+    isBusy: function() {
+      console.log(this.$store.state.dataProduct.length, "computed");
+      if (this.$store.state.dataProduct.length > 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    filteredPersons: function() {
+      return this.$store.state.dataProduct.filter(this.filterByReturn);
+    }
     // sortOptions() {
     //   // Create an options list from our fields
     //   return this.fields

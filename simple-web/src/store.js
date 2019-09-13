@@ -19,18 +19,18 @@ export default new Vuex.Store({
     sorting: []
   },
   mutations: {
-    SEARCHING(state, payload) {
-      state.newSearching = payload
-      console.log(this.state.newSearching)
+    EMPTY_DATA(state) {
+      state.dataProduct = []
+      //console.log(this.state.dataProduct,"kosong kah?")
     },
     LOGIN(state) {
       state.isLogin = true
 
     },
     SET_COLUMN(state, payload) {
-      // console.log(payload, "disiniii ni")
+      // //console.log(payload, "disiniii ni")
       state.column = payload
-      console.log(this.state.column,"sorting")
+      //console.log(this.state.column,"sorting")
     },
     SET_SORT(state,payload) {
       state.sorting = payload
@@ -40,18 +40,18 @@ export default new Vuex.Store({
     },
     SET_DATA_PRODUCT(state, payload) {
       state.dataProduct = payload
-      console.log(this.state.dataProduct, "payloadnya")
+      //console.log(this.state.dataProduct, "payloadnya")
     },
     SET_OSF(state, payload) {
       state.osf = payload
-      console.log(this.state.osf, "ini osf")
+      //console.log(this.state.osf, "ini osf")
     },
     SET_OSF_COUNT(state, payload) {
       state.osfCount = payload
     },
     SET_INVOICE(state, payload) {
       state.invoice = payload
-      console.log(this.state.invoice, "ini invoice")
+      //console.log(this.state.invoice, "ini invoice")
     },
     SET_INVOICE_COUNT(state, payload) {
       state.invoiceCount = payload
@@ -62,7 +62,7 @@ export default new Vuex.Store({
       instance
         .get("/invoice", {})
         .then(({ data }) => {
-          console.log(data, "disini");
+          //console.log(data, "disini");
           // context.questions = data;
           context.commit("SET_INVOICE", data)
           let counting = 0
@@ -70,18 +70,18 @@ export default new Vuex.Store({
             counting += data[i].count
           }
           context.commit("SET_INVOICE_COUNT", counting)
-          // console.log(counting)
-          // console.log(context.questions);
+          // //console.log(counting)
+          // //console.log(context.questions);
         })
         .catch(function (error) {
-          console.log(error);
+          //console.log(error);
         });
     },
     GET_OSF(context) {
       instance
         .get("/osf", {})
         .then(({ data }) => {
-          console.log(data, "disini");
+          //console.log(data, "disini");
           // context.questions = data;
           context.commit("SET_OSF", data)
           let counting = 0
@@ -89,21 +89,21 @@ export default new Vuex.Store({
             counting += data[i].count
           }
           context.commit("SET_OSF_COUNT", counting)
-          // console.log(counting)
-          // console.log(context.questions);
+          // //console.log(counting)
+          // //console.log(context.questions);
         })
         .catch(function (error) {
-          console.log(error);
+          //console.log(error);
         });
     },
     GET_DATA(context, payload) {
-      console.log(payload.split(" ")[0], "data coba split")
+      //console.log(payload.split(" ")[0], "data coba split")
       let data1 = payload.split(" ")[0]
       let data2 = payload.split(" ")[1]
-      console.log(data2, "data dua")
+      //console.log(data2, "data dua")
       if (data2 !== undefined) {
         data1 = data1 + data2
-        console.log(data1, "Setelah ditambah")
+        //console.log(data1, "Setelah ditambah")
       }
       if (data1 == "ConventionalOSF" || data1 == "ShariaOSF" || data1 == "ShariaInvoice" || data1 == "ConventionalInvoice") {
         context.commit("SET_SORT", ["A","B+","B"])
@@ -116,13 +116,13 @@ export default new Vuex.Store({
       instance
         .get(`/${data1}`, {})
         .then(({ data }) => {
-          console.log(data, "disini");
+          //console.log(data, "disini");
           // context.questions = data;
           context.commit("SET_DATA_PRODUCT", data)
-          // console.log(context.questions);
+          // //console.log(context.questions);
         })
         .catch(function (error) {
-          console.log(error);
+          //console.log(error);
         });
     },
 
@@ -130,13 +130,13 @@ export default new Vuex.Store({
       instance
         .get("/main", {})
         .then(({ data }) => {
-          console.log(data, "disini main data");
+          //console.log(data, "disini main data");
           // context.questions = data;
           context.commit("SET_MAIN", data)
-          // console.log(context.questions);
+          // //console.log(context.questions);
         })
         .catch(function (error) {
-          console.log(error);
+          //console.log(error);
         });
     },
   }

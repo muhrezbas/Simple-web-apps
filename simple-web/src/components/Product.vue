@@ -35,6 +35,7 @@ export default {
     this.$store.dispatch("GET_INVOICE");
     this.$store.dispatch("GET_OSF");
     this.$store.dispatch("GET_MAIN");
+    this.$store.commit('EMPTY_DATA');
   }
 };
 </script>
